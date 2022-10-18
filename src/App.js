@@ -88,16 +88,12 @@ function App() {
   function playSequence() {
     let i = 0;
     const sequence = [...stateSequence, nextSequence()];
-    // console.log(sequence);
     setSequence(sequence);
     setGuesses([]);
     const id = setInterval(() => {
       blinkPanel(sequence[i++]);
       if (i === sequence.length) clearInterval(id);
     }, levels.playSequence);
-    // console.log(sequence);
-    console.log(sequence);
-    // console.log(stateCss);
   }
 
   function blinkPanel(panel) {
@@ -147,7 +143,11 @@ function App() {
     const pans = ["green", "red", "yellow", "blue"];
     return pans.map((panel, i) => {
       const css = `taster ${panel} ${stateCss[i]}`;
-      return <div key={i} className={css} onClick={() => panelClick(i)}></div>;
+      return (
+        <div key={i} className={css} onClick={() => panelClick(i)}>
+          {i}
+        </div>
+      );
     });
   }
 
@@ -171,10 +171,10 @@ function App() {
   }, [stateScore]);
 
   useEffect(() => {
-    if (window.innerWidth > 595) {
+    if (!navigator.userAgentData.mobile) {
       setDisclaimer(true);
     }
-  }, [window.innerWidth]);
+  }, []);
 
   useEffect(() => {
     handleLevels();
