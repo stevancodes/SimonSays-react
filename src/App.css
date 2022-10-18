@@ -107,6 +107,10 @@
     background-color: rgb(44, 44, 198);
     color: white;
   }
+  .btn-blk {
+    background-color: black;
+    color: white;
+  }
 
   .score {
     margin-bottom: 20px;

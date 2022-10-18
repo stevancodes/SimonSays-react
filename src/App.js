@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./App.css";
 import axios from "axios";
 
@@ -17,6 +17,21 @@ function App() {
     document.getElementById("sound3"),
     document.getElementById("sound4"),
   ];
+
+  const levelsObject = useMemo(() => {
+    return {
+      easy: {
+        playSequence: 1000,
+        blinkPanelFirst: 500,
+        blinkPanelSecond: 1000,
+      },
+      hard: {
+        playSequence: 500,
+        blinkPanelFirst: 300,
+        blinkPanelSecond: 500,
+      },
+    };
+  }, []);
   const [stateScore, setScore] = useState(0);
   const [stateSequence, setSequence] = useState([]);
   const [stateGuesses, setGuesses] = useState([]);
@@ -26,6 +41,8 @@ function App() {
   const [stateTitle, setTitle] = useState("");
   const [bestScore, setBestScore] = useState(0);
   const [disclaimer, setDisclaimer] = useState(false);
+  const [levelsBtn, setLevelsBtn] = useState(true);
+  const [levels, setLevels] = useState(levelsBtn ? levelsObject.easy : levelsObject.hard);
 
   function sound(panel) {
     if (stateSound && sounds[panel] != null) {
@@ -77,7 +94,7 @@ function App() {
     const id = setInterval(() => {
       blinkPanel(sequence[i++]);
       if (i === sequence.length) clearInterval(id);
-    }, 1000);
+    }, levels.playSequence);
     // console.log(sequence);
     console.log(sequence);
     // console.log(stateCss);
@@ -88,8 +105,8 @@ function App() {
     setTimeout(() => {
       setCss(css);
       sound(panel);
-    }, 500);
-    setTimeout(() => setCss([]), 1000);
+    }, levels.blinkPanelFirst);
+    setTimeout(() => setCss([]), levels.blinkPanelSecond);
   }
 
   async function updateBestScore() {
@@ -134,6 +151,14 @@ function App() {
     });
   }
 
+  function handleLevels() {
+    if (levelsBtn) {
+      setLevels(levelsObject.easy);
+      return;
+    }
+    setLevels(levelsObject.hard);
+  }
+
   useEffect(() => {
     (async () => {
       const response = await axios.get(MOCK_API);
@@ -150,6 +175,10 @@ function App() {
       setDisclaimer(true);
     }
   }, [window.innerWidth]);
+
+  useEffect(() => {
+    handleLevels();
+  }, [levelsBtn]);
 
   return (
     <>
@@ -170,6 +199,9 @@ function App() {
               </button>
               <button className="btn-blue" onClick={() => onStart()}>
                 START
+              </button>
+              <button className="btn-blk" onClick={() => setLevelsBtn(!levelsBtn)}>
+                {levelsBtn ? "EASY" : "HARD"}
               </button>
             </div>
             <audio id="sound1" src={sound1} preload="auto"></audio>
