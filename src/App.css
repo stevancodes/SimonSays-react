@@ -87,7 +87,7 @@
   .active {
     transition: 100ms;
     /* transform: scale(1%); */
-    border: 2px solid white !important;
+    border: 10px solid white !important;
   }
   button {
     padding: 8px;
