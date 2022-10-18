@@ -1,38 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: gray;
+}
+
+.simon {
+  height: 90%;
+  width: 50%;
+  background-color: black;
+  border-radius: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* For extremely small screen devices (595px and below) */
+@media only screen and (max-width: 595px) {
+  .simon {
+    height: 50%;
+    width: 90%;
+    background-color: black;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 10%;
+  }
+
+  .wrapper {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .taster {
+    height: 40%;
+    width: 40%;
+    /* background-color: aqua; */
+    margin: 3%;
+  }
+  .taster:active {
+    transition: 100ms;
+    /* transform: scale(1.1); */
+    border: 3px solid white !important;
+  }
+  .green {
+    background-color: green;
+    border-top-left-radius: 60px;
+  }
+  .red {
+    background-color: red;
+    border-top-right-radius: 60px;
+  }
+  .blue {
+    background-color: blue;
+    border-bottom-right-radius: 60px;
+  }
+  .yellow {
+    background-color: yellow;
+    border-bottom-left-radius: 60px;
+  }
+
+  .active {
+    transition: 100ms;
+    /* transform: scale(1%); */
+    border: 2px solid white !important;
+  }
+  button {
+    padding: 8px;
+    margin: 0 6px;
+    border-radius: 10%;
+    letter-spacing: 2px;
+  }
+  .btn-yellow {
+    background-color: rgb(210, 210, 20);
+    color: black;
+  }
+  .btn-red {
+    background-color: rgb(204, 54, 54);
+    color: black;
+  }
+  .btn-blue {
+    background-color: rgb(44, 44, 198);
+    color: white;
+  }
+
+  .score {
+    margin-bottom: 30px;
+    color: rgb(117, 60, 60);
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  .bestScore {
+    margin-bottom: 10%;
+    font-size: 24px;
+    font-weight: 500;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Small screen devices (600px and above) */
+@media only screen and (min-width: 600px) {
+  .App {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  .App {
+    display: none;
+  }
+}
+
+/* Big screen devices (889px and above) */
+@media only screen and (min-width: 889px) {
+  .App {
+    display: none;
+  }
+}
+
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  .App {
+    display: none;
   }
 }
