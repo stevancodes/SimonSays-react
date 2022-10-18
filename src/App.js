@@ -147,15 +147,9 @@ function App() {
     const pans = ["green", "red", "yellow", "blue"];
     return pans.map((panel, i) => {
       const css = `taster ${panel} ${stateCss[i]}`;
-      return (
-        <div key={i} className={css} onClick={() => panelClick(i)}>
-          {i}
-        </div>
-      );
+      return <div key={i} className={css} onClick={() => panelClick(i)}></div>;
     });
   }
-
-  console.log(window.navigator.userAgentData.mobile);
 
   function handleLevels() {
     if (levelsBtn) {
