@@ -88,12 +88,16 @@ function App() {
   function playSequence() {
     let i = 0;
     const sequence = [...stateSequence, nextSequence()];
+    // console.log(sequence);
     setSequence(sequence);
     setGuesses([]);
     const id = setInterval(() => {
       blinkPanel(sequence[i++]);
       if (i === sequence.length) clearInterval(id);
     }, levels.playSequence);
+    // console.log(sequence);
+    console.log(sequence);
+    // console.log(stateCss);
   }
 
   function blinkPanel(panel) {
@@ -151,6 +155,8 @@ function App() {
     });
   }
 
+  console.log(window.navigator.userAgentData.mobile);
+
   function handleLevels() {
     if (levelsBtn) {
       setLevels(levelsObject.easy);
@@ -171,10 +177,10 @@ function App() {
   }, [stateScore]);
 
   useEffect(() => {
-    if (!navigator.userAgentData.mobile) {
+    if (window.innerWidth > 595) {
       setDisclaimer(true);
     }
-  }, []);
+  }, [window.innerWidth]);
 
   useEffect(() => {
     handleLevels();
