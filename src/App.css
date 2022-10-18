@@ -25,6 +25,15 @@
   color: white;
 }
 
+.disclaimer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 40;
+}
+
 /* For extremely small screen devices (595px and below) */
 @media only screen and (max-width: 595px) {
   .simon {
@@ -56,7 +65,7 @@
   .taster:active {
     transition: 100ms;
     /* transform: scale(1.1); */
-    border: 3px solid white !important;
+    border: 10px solid white !important;
   }
   .green {
     background-color: green;

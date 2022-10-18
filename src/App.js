@@ -25,6 +25,7 @@ function App() {
   const [stateOn, setOn] = useState(false);
   const [stateTitle, setTitle] = useState("");
   const [bestScore, setBestScore] = useState(0);
+  const [disclaimer, setDisclaimer] = useState(false);
 
   function sound(panel) {
     if (stateSound && sounds[panel] != null) {
@@ -144,29 +145,43 @@ function App() {
     }
   }, [stateScore]);
 
+  useEffect(() => {
+    if (window.innerWidth > 595) {
+      setDisclaimer(true);
+    }
+  }, [window.innerWidth]);
+
   return (
-    <div className="App">
-      <div className="bestScore">BEST SCORE: {bestScore}</div>
-      <div className="simon">
-        <div className="wrapper">{renderTasters()}</div>
-      </div>
-      <div className="score">{stateTitle || `SCORE: ${stateScore}`}</div>
-      <div className="controls">
-        {/* <button className="btn-yellow" onClick={() => onSound()}>
+    <>
+      {!disclaimer ? (
+        <>
+          <div className="App">
+            <div className="bestScore">BEST SCORE: {bestScore}</div>
+            <div className="simon">
+              <div className="wrapper">{renderTasters()}</div>
+            </div>
+            <div className="score">{stateTitle || `SCORE: ${stateScore}`}</div>
+            <div className="controls">
+              {/* <button className="btn-yellow" onClick={() => onSound()}>
           SOUND
         </button> */}
-        <button className="btn-red" onClick={() => onReset()}>
-          RESET
-        </button>
-        <button className="btn-blue" onClick={() => onStart()}>
-          START
-        </button>
-      </div>
-      <audio id="sound1" src={sound1} preload="auto"></audio>
-      <audio id="sound2" src={sound2} preload="auto"></audio>
-      <audio id="sound3" src={sound3} preload="auto"></audio>
-      <audio id="sound4" src={sound4} preload="auto"></audio>
-    </div>
+              <button className="btn-red" onClick={() => onReset()}>
+                RESET
+              </button>
+              <button className="btn-blue" onClick={() => onStart()}>
+                START
+              </button>
+            </div>
+            <audio id="sound1" src={sound1} preload="auto"></audio>
+            <audio id="sound2" src={sound2} preload="auto"></audio>
+            <audio id="sound3" src={sound3} preload="auto"></audio>
+            <audio id="sound4" src={sound4} preload="auto"></audio>
+          </div>
+        </>
+      ) : (
+        <div className="disclaimer">Mobile use only</div>
+      )}
+    </>
   );
 }
 
