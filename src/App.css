@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Michroma", sans-serif;
+  font-size: 10px;
 }
 
 .App {
@@ -11,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: rgb(187, 183, 183);
 }
 
 .simon {
@@ -39,13 +42,16 @@
   .simon {
     height: 50%;
     width: 90%;
-    background-color: black;
+    /* background-color: black; */
     border-radius: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     margin-bottom: 5%;
+    border-radius: 50px;
+    background: #a1a0a0;
+    box-shadow: -27px 27px 50px #6d6d6d, 17px -17px 50px #6d6d6d;
   }
 
   .wrapper {
@@ -65,43 +71,69 @@
   .taster:active {
     transition: 100ms;
     /* transform: scale(1.1); */
-    border: 10px solid white !important;
+    /* border: 10px solid white !important; */
+    box-shadow: inset 20px 20px 30px rgba(255, 255, 255, 0.83),
+      inset -20px -20px 30px rgba(255, 255, 255, 0.856);
   }
   .green {
-    background-color: green;
+    background-color: rgb(30, 168, 30);
     border-top-left-radius: 60px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
   .red {
-    background-color: red;
+    background-color: rgb(232, 38, 38);
+    border-top-left-radius: 10px;
     border-top-right-radius: 60px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
   .blue {
-    background-color: blue;
+    background-color: rgb(40, 40, 224);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 10px;
   }
   .yellow {
-    background-color: yellow;
+    background-color: rgb(232, 232, 53);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     border-bottom-left-radius: 60px;
   }
 
   .active {
     transition: 100ms;
     /* transform: scale(1%); */
-    border: 10px solid white !important;
+    /* border: 10px solid white !important; */
+    box-shadow: inset 20px 20px 30px rgba(255, 255, 255, 0.83),
+      inset -20px -20px 30px rgba(255, 255, 255, 0.856);
   }
   button {
-    padding: 8px;
+    padding: 10px;
     margin: 0 6px;
     border-radius: 10%;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    background: #504f4f !important;
+    box-shadow: -10px 14px 30px #818080;
+    transition: 200ms;
+  }
+
+  button:active {
+    color: red !important;
+    transform: scale(90%);
   }
   .btn-yellow {
     background-color: rgb(210, 210, 20);
-    color: black;
+    color: white;
   }
   .btn-red {
     background-color: rgb(204, 54, 54);
-    color: black;
+    color: white;
   }
   .btn-blue {
     background-color: rgb(44, 44, 198);
@@ -114,14 +146,14 @@
 
   .score {
     margin-bottom: 20px;
-    color: rgb(117, 60, 60);
+    color: black;
     font-weight: 800;
     letter-spacing: 2px;
   }
 
   .bestScore {
     margin-bottom: 7%;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
   }
 }
